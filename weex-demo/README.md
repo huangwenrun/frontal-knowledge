@@ -1,5 +1,5 @@
 # weex-demo
-![splash](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1211.PNG)
+![login](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1211.PNG)
 
 
 ## How to start
@@ -61,12 +61,12 @@ http://192.168.0.111:8080/index.html?page=./src/build/UserLogin.js
 ### Overview 
 
 
-[登录界面1](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1211.PNG)
+![登录界面1](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1211.PNG)
 
 
-[登录界面2](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1212.PNG)
+![登录界面2](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1212.PNG)
 
-[登录界面3](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1213.PNG)
+![登录界面3](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1213.PNG)
 
 ### Future 
 demo虽小，也能显现weex项目的结构和特点，三端统一，write once，run everywhere.有常见的移动端交互，动画，事件。
