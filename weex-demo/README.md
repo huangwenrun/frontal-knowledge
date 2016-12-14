@@ -1,5 +1,5 @@
 # weex-demo-dusan
-![splash](https://github.com/duqian291902259/weex-demo-dusan/blob/master/screenshot/weex-demo-dusan.gif)
+![splash](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1211.png)
 
 
 ## How to start
@@ -49,41 +49,26 @@ npm run serve
 1，在APP中渲染：
 
 build后的目标代码，将对应的url生成二维码后，用官方的playground扫描二维码，可以在app中渲染： 
-http://192.168.100.47:8080/src/build/main.js
+http://192.168.0.111:8080/src/build/UserLogin.js
 
 2，在浏览器中预览页面效果：
 
-http://192.168.100.47:8080/index.html?page=./src/build/main.js
+http://192.168.0.111:8080/index.html?page=./src/build/UserLogin.js
 
 
 ---
 
 ### Overview 
-接触了一下weex，是不是感觉666？该demo仅用weex实现了splash，guide，home页面，交互主要是点击，左右，上下滑动。
 
-1，进入splash页面，有个loading动画效果，缩放，旋转。
 
-![splash界面](https://github.com/duqian291902259/weex-demo-dusan/blob/master/screenshot/page-splash.png)
+[登录界面1](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1211.png)
 
-2，自动（点击）进入用户向导，左右滑动切换（自动切换），索引，点击立即体验。
 
-![用户向导pages](https://github.com/duqian291902259/weex-demo-dusan/blob/master/screenshot/page-guide.png)
+[登录界面2](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1212.png)
 
-3，home界面简单，仅做演示。后续完善login，网络交互等更复杂的场景。
-
-![home界面](https://github.com/duqian291902259/weex-demo-dusan/blob/master/screenshot/page-home.png)
+[登录界面3](https://github.com/huangwenrun/frontal-knowledge/blob/master/weex-demo/screenshot/IMG_1213.png)
 
 ### Future 
 demo虽小，也能显现weex项目的结构和特点，三端统一，write once，run everywhere.有常见的移动端交互，动画，事件。
 
 weex的强大之处，有待研究，后续完善。
-
-更多内容，请看相关博文：
-
-[1，Weex开源测试之环境搭建，weex未来展望](http://blog.csdn.net/dzsw0117/article/details/51702319)
-
-[2，Weex开发笔记](http://blog.csdn.net/dzsw0117/article/details/51773175)
-
-
-### Thanks to weex team！
-Weex，I will follow you!
