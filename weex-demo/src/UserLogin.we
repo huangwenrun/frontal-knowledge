@@ -1,0 +1,246 @@
+<template>
+    <div>
+        <div class="exit">
+            <text class="close" onclick="">×</text>
+        </div>
+
+        <div class="login_content">
+            <text style="font-size: 120px;color: #ff9797;margin-bottom: 40">weex</text>
+            <div class="login_input">
+                <div class="user_name">
+                    <image style="width: 80;height: 90" src="http://192.168.0.108:8080/screenshot/contacts.png"></image>
+                    <input style="width: 520;height: 90" onchange="onchange('name')" oninput="oninput('name')"
+                           type="text" placeholder="手机号或邮箱" value="{{userName}}">
+                    <text style="font-size: 60;color: #adadad" onclick="clear('name')">{{delName}}</text>
+                </div>
+                <div style="background-color: #bebebe;height: 2"></div>
+                <div class="user_password">
+                    <image style="width: 80;height: 90" src="http://192.168.0.108:8080/screenshot/password.png"></image>
+                    <input style="width: 520;height: 90" type="password" onchange="onchange('password')"
+                           oninput="oninput('password')" placeholder="密码" value="{{userPassword}}">
+                    <text style="font-size: 60;color: #adadad" onclick="clear('password')">{{delPassword}}</text>
+                    <br>
+                </div>
+            </div>
+            <div class="{{button_style}}" onclick="login">
+                <text style="text-align: center;color: #ffffff">登录</text>
+            </div>
+            <text style="text-family: serif;font-size: 31px;color: #8e8e8e;margin-top: 30" onclick="{{}}">忘记密码？</text>
+        </div>
+        <div class="login_foot">
+            <text style="text-family: serif;font-size: 31px;color: #bebebe">————— 社交账号直接登录 —————</text>
+            <div class="third_login">
+                <image style="width: 100;height: 100" src="http://192.168.0.108:8080/screenshot/qq.png"></image>
+                <image style="width: 100;height: 100;margin-left: 20"
+                       src="http://192.168.0.108:8080/screenshot/weibo.png"></image>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+    .close {
+        font-size: 70;
+        color: #adadad;
+        position: absolute;
+        right: 20;
+    }
+
+    .user_name {
+        flex-direction: row;
+    }
+
+    .user_password {
+        flex-direction: row;
+    }
+
+    .login_button_of {
+        padding-top: 25;
+        width: 650;
+        height: 90;
+        background-color: #0066cc;
+        opacity: 0.5;
+        margin-top: 80;
+        border-style: solid;
+        border-width: 1;
+        border-radius: 8;
+        border-color: #66b3ff
+    }
+
+    .login_button_on {
+        padding-top: 25;
+        width: 650;
+        height: 90;
+        background-color: #0066cc;
+        opacity: 1;
+        margin-top: 80;
+        border-style: solid;
+        border-width: 1;
+        border-radius: 8;
+        border-color: #66b3ff
+    }
+
+    .exit {
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .login_content {
+        margin-top: 50;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .login_foot {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top: 100;
+    }
+
+    .third_login {
+        margin-top: 20;
+        justify-content: center;
+        flex-direction: row
+    }
+
+    .login_input {
+        width: 650;
+        height: 188;
+        margin-top: 20;
+        border-style: solid;
+        border-width: 2;
+        border-radius: 8;
+        border-color: #bebebe
+    }
+</style>
+
+<script>
+    var modal;
+    var stream;
+    var navigator;
+    module.exports = {
+        data: {
+            userName: "",
+            userPassword: "",
+            delName: '',
+            delPassword: '',
+            button_style: 'login_button_of',
+            login_url:'http://httpbin.org/post'
+        },
+        methods: {
+            onchange: function (type, event) {
+                if (type === 'name') {
+                    this.delName = '';
+                } else if (type == 'password') {
+                    this.delPassword = '';
+                }
+            },
+            oninput: function (type, event) {
+                if (type === 'name') {
+                    this.userName = event.value;
+                    if (event.value.length != 0) {
+                        this.delName = '×'
+                        this.delPassword = '';
+                    } else {
+                        this.delName = '';
+                    }
+
+                } else if (type === 'password') {
+                    this.userPassword = event.value;
+                    if (event.value.length != 0) {
+                        this.delPassword = '×'
+                        this.delName = '';
+                    } else {
+                        this.delPassword = '';
+                    }
+                }
+                if ((this.userName.length != 0) && ( this.userPassword.length != 0)) {
+                    this.button_style = 'login_button_on';
+                } else {
+                    this.button_style = 'login_button_of';
+                }
+            },
+            telRuleCheck: function (string) {
+                var pattern = /^1[34578]\d{9}$/;
+                if (pattern.test(string)) {
+                    return true;
+                }
+                return false;
+            },
+            clear: function (type) {
+                if (type === 'name') {
+                    this.delName = '';
+                    this.userName = '';
+                } else if (type === 'password') {
+                    this.delPassword = '';
+                    this.userPassword = '';
+                }
+            },
+            login: function () {
+                this.button_style = 'login_button_of';
+                if (this.telRuleCheck(this.userName)) {
+                    //登录
+                    var request_body = {'username':this.userName,'password':this.userPassword};
+                    var request_body_string = JSON.stringify(request_body);
+                    //var url = this.assembly_url(login_url,this.userName,this.userPassword);
+                    stream.fetch({
+                            method: 'POST',
+                            url: this.login_url,
+                            header: {
+                                'Content-Type':'application/json'
+                            },
+                            type: 'json',
+                            body:request_body_string
+                        },
+                        function (ret) {
+                            if (!ret.ok) {
+                                this.show_message('登录失败',2);
+                            } else {
+                                //跳转到某个地址
+                                var params = {
+                                    'url': 'http://192.168.0.111:8080/index.html?page=./src/build/UserLogin.js',//需要跳转的地址
+                                    'animated' : 'true', //是否需要动画
+                                }
+                                navigator.push(params, function(e) {
+                                    //跳转之后的回调函数
+                                });
+
+                            }
+                        },
+                        function (response) {
+
+                        });
+                } else {
+                    this.show_message('请输入正确的手机号码',2);
+                    console.log('check mobile phone ' + event.value + ' failed.');
+                }
+            },
+            show_message:function (msg,dur) {
+                modal.toast({
+                    'message': msg,
+                    'duration': dur
+                });
+            },
+            assembly_url:function (url,parm1,parm2) {
+                
+            }
+        },
+        init: function () {
+
+        },
+        created: function () {
+
+        },
+        ready: function () {
+            navigator = require('@weex-module/navigator');
+            modal = require('@weex-module/modal');
+            stream = require('@weex-module/stream');
+        },
+        destroyed: function () {
+
+        }
+    }
+</script>

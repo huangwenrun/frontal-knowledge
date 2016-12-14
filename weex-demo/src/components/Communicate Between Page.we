@@ -1,0 +1,19 @@
+<template></template>
+
+<script>
+    /**
+     * 页面通信有两种方式
+
+     1.通过 url 参数传递。
+     2.通过 localStorage 数据存储。
+
+     */
+    getUrlParam: function(key) {
+        var t = this.$getConfig().bundleUrl;
+        var reg = new RegExp('[?|&]' + key + '=([^&]+)');
+        var match = t.match(reg);
+        return match && match[1];
+    }
+</script>
+
+<style></style>

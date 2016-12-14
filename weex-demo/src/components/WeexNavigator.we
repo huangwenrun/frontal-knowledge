@@ -1,0 +1,31 @@
+//weex 路由处理
+<template></template>
+
+<style></style>
+
+<script>
+
+    /**
+     * weex路由原理，navigator通过push 将地址放入一个路由栈中，
+     * 然后载入页面，当需要回退到某个页面时，页面的地址从路由栈中弹出（遵循栈的基本原理，先进先出）
+     */
+
+    //跳转到某个地址
+    var params = {
+        'url': 'navigator-demo.js',//需要跳转的地址
+        'animated' : 'true', //是否需要动画
+    }
+    var navigator = require('@weex-module/navigator');
+    navigator.push(params, function(e) {
+        //跳转之后的回调函数
+    });
+
+    //回退到某个地址
+    var params = {
+        'animated' : 'true',
+    }
+    var navigator = require('@weex-module/navigator');
+    navigator.pop(params, function(e) {
+        //callback
+    });
+</script>

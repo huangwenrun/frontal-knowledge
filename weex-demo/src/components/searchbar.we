@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <input class="searchbar" type="text" placeholder="一个输入框"></input>
+  </div>
+</template>
+
+<style>
+  .searchbar {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {},
+  }
+</script>
